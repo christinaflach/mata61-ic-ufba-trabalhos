@@ -93,7 +93,7 @@ representa o caractere ```d``` e o ```\n``` representa o valor ASCII 10.
 
 ### 7. Erros Léxicos
 
-- caracter inválido 
+- caractere inválido 
 - string mal-formada
 
 ### Exemplos
@@ -108,7 +108,7 @@ s: string  = "hello world\n";
 ```
 x: integer = 65;
 y: boolean = true;
-if(x>y) ... etc.
+if(x?y) ... etc. // caractere inválido
 ```
 
 ```
@@ -118,14 +118,21 @@ if(f<100) ...  etc.
 
 ```
 writenum: function void ( b: integer );
-a: boolean = true;
-writenum(a);  // semantic error
+a: integer = 99;
+writenum(a); 
 ```
 
 ```
 b: array [2] boolean = {true,false};
 x: integer = 0;
-x = b[0];      // semantic error
+if(b[0]) x = x+1;     
+```
+
+```
+
+main: function integer () = {
+    puts("hello world);   // string mal-formada
+}
 ```
 
 ## Aspectos Sintáticos
