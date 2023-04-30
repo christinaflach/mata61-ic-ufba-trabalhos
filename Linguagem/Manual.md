@@ -36,7 +36,7 @@ Caracteres maiúsculos e minúsculos em identificadores são diferenciados.
 
 ```
 array  boolean  else  false  function  if
-integer  print  return  string  true  void   while
+integer  print  return  true  void   while
 ``` 
 
 As palavras-chave, sempre escritas em letras minúsculas, são reservadas 
@@ -44,11 +44,9 @@ e não podem ser usadas como identificadores.
 
 - Exemplo: ```integer``` é palavra reservada, porém  ```IntegeR``` não é.
 
-Três palavras reservadas representam tipos atômicos da linguagem:
+Duas palavras reservadas representam tipos atômicos da linguagem:
 
-```
-integer   boolean   string
-```
+```integer``` e   ```boolean ```.
 
 A palavra reservada ```array``` é usada na declaração de arrays, único tipoestruturado da linguagem.
 
@@ -76,25 +74,9 @@ Uma constante inteira é uma sequência não-vazia de dígitos decimais.
 
 Há duas constantes válidas para o tipo ```boolean```: ```false``` e ```true```.
 
-#### Tipo ```string```
-
-Uma string é sequência de caracteres entre aspas duplas, terminadas por _null_.
-
-Uma string pode ter até 256 caracteres e pode conter apenas os seguintes
-códigos de barra invertida:
-
-- \n indica nova linha (valor ASCII 10),
-- \0 indica _null_ (valor ASCII zero),
-- \c indica o próprio caractere ```c```.
-
-- Exemplo: Na string ```"letra \d\n."```, o ```\d``` 
-representa o caractere ```d``` e o ```\n``` representa o valor ASCII 10.
-
-
-### 7. Erros Léxicos
+### 6. Erros Léxicos
 
 - caractere inválido 
-- string mal-formada
 
 ### Exemplos
 
@@ -102,7 +84,6 @@ representa o caractere ```d``` e o ```\n``` representa o valor ASCII 10.
 x: integer;
 y: integer = 123;
 b: boolean = false;
-s: string  = "hello world\n";
 ```
 
 ```
@@ -131,7 +112,8 @@ if(b[0]) x = x+1;
 ```
 
 main: function integer () = {
-    puts("hello world);   // string mal-formada
+    i: integer = 10;
+    while (i > 0) ... etc.  
 }
 ```
 
@@ -149,7 +131,6 @@ TBD.
 
 - O tipo ```integer``` define constantes representadas como ``signed 64 bit```.
 - O tipo ```boolean``` possui dois valores literais: _true_ e _false_.
-- O tipo ```string``` define cadeias de caracteres entre aspas duplas, terminadas por _null_ e  que não podem ser modificadas.
 
 - Arrays são estáticos, isto é, são criados com tamanho fixo e memória reservada; o tamanho não pode ser modificado depois.
 
