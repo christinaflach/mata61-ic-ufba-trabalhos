@@ -13,7 +13,7 @@ Descreveremos a linguagem através de exemplos, deixando para você ler com aten
 
 Os caracteres de espacejamento são _blank_ (' '), _newline_ ('\n'),  _tab_ ('\t') e _carriage return_ ('\r').
 
-Na linguagem, caracteres de espacejamento não têm significado e devem ser desconsiderados.
+Os caracteres de espacejamento não têm papel significativo em programas B- e devem ser desconsiderados pelo analisador léxico.
 
 ### 2. Comentários de uma linha
 
@@ -22,7 +22,7 @@ Comentários devem ser desconsiderados.
 
 - Exemplo: ```a=5; // comentário no estilo C++```
 
-### 3. Identificadores`
+### 3. Identificadores
 
 Identificadores são usados como nomes de variáveis e funções. 
 São compostos por letras maiúsculas e minúsculas, dígitos decimais e _underscores_.
@@ -30,6 +30,7 @@ Identificadores devem começar com uma letra e podem ter até 256 caracteres.
 Caracteres maiúsculos e minúsculos em identificadores são diferenciados.
 
 - Exemplo: ```i x9 x9_ my_str name4you  NomeCompleto```
+- Exemplo: ```x9``` e ```X9``` são dois identificadores distintos.
 
 ### 4. Palavras-chave (_keywords_)
 
@@ -93,7 +94,6 @@ representa o caractere ```d``` e o ```\n``` representa o valor ASCII 10.
 ### 7. Erros Léxicos
 
 - caracter inválido 
-- caracter mal-formado
 - string mal-formada
 
 ### Exemplos
@@ -108,12 +108,12 @@ s: string  = "hello world\n";
 ```
 x: integer = 65;
 y: boolean = true;
-if(x>y) ... // semantic  error: x and y are of different types!
+if(x>y) ... etc.
 ```
 
 ```
 f: integer = 0;
-if(f<100) ...  
+if(f<100) ...  etc.
 ```
 
 ```
@@ -125,7 +125,7 @@ writenum(a);  // semantic error: a is not integer!
 ```
 b: array [2] boolean = {true,false};
 x: integer = 0;
-x = b[0];      // error: x is not a boolean!
+x = b[0];      // semantic error: x is not a boolean!
 ```
 
 ## Aspectos Sintáticos
@@ -135,6 +135,8 @@ TBD.
 ## Aspectos Semânticos 
 
 TBD.
+
+<!--
 
 #### Tipos
 
@@ -160,6 +162,7 @@ TBD.
 Um programa completo deve ter uma função chamada de ```main``` que retorna um valor inteiro. 
 A lista de parâmetros de _main_ pode ser vazia ou usar _argc_ e _argv_ 
 como em programas C. 
+-->
 
 -----
 
