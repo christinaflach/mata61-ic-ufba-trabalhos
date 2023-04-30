@@ -42,7 +42,7 @@ integer  print  return  string  true  void   while
 As palavras-chave, sempre escritas em letras minúsculas, são reservadas 
 e não podem ser usadas como identificadores. 
 
-- Exemplo: _integer_ é palavra reservada, porém  _IntegeR_ não é.
+- Exemplo: ```integer``` é palavra reservada, porém  ```IntegeR``` não é.
 
 Três palavras reservadas representam tipos atômicos da linguagem:
 
@@ -119,13 +119,13 @@ if(f<100) ...  etc.
 ```
 writenum: function void ( b: integer );
 a: boolean = true;
-writenum(a);  // semantic error: a is not integer!
+writenum(a);  // semantic error
 ```
 
 ```
 b: array [2] boolean = {true,false};
 x: integer = 0;
-x = b[0];      // semantic error: x is not a boolean!
+x = b[0];      // semantic error
 ```
 
 ## Aspectos Sintáticos
@@ -160,8 +160,8 @@ TBD.
 
 
 Um programa completo deve ter uma função chamada de ```main``` que retorna um valor inteiro. 
-A lista de parâmetros de _main_ pode ser vazia ou usar _argc_ e _argv_ 
-como em programas C. 
+A lista de parâmetros de _main_ pode ser vazia ou usar ```argc``` 
+e ```argv``` como em programas C. 
 -->
 
 -----
