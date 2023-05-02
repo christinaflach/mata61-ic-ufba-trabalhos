@@ -64,7 +64,7 @@ A palavra reservada ```array``` é usada na declaração de arrays, único tipoe
   <=  >=  ==  !=  &&  ||
 ```
 
-### 6. Constantes 
+### 6. Literais 
 
 #### Tipo ```integer```
 

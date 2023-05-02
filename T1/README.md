@@ -3,7 +3,7 @@
 ## Trabalho 1 (T1): Análise Léxica
 
 Nesta parte do projeto, você irá implementar um analisador léxico
-para a [linguagem B-](../Linguagem/Manual.md)).
+para a [linguagem B-](../B-/MANUAL.md)).
 
 O analisador léxico do trabalho T1 deve receber como entrada 
 um programa fonte em B- e retornar um sequência _tokens_, 
@@ -17,8 +17,6 @@ retornar o token __ERROR__.
 O analisador léxico deve reportar todos os erros léxicos presentes 
 no programa fonte analisado, ou seja, após identificar e reportar o erro, 
 a análise léxica deve prosseguir até o final do programa fonte.
-
-A versão da linguagem B- usada aqui é levemente diferente da usada no livro do Douglas Thain, mas os seus exemplos de código e o material podem ser extremamente úteis.
 
 ## Classes de _tokens_
 
@@ -48,7 +46,9 @@ contendo um programa fonte em B-.
 main: function integer () =
 {
     a: integer;
-    a = 4 + 5;
+    read(a);
+    if (a <= 0) 
+       a = 1;
     print(a);
 }
 ```
@@ -66,11 +66,11 @@ onde ```line_num``` é o número da linha no arquivo de entrada
 em que  _token_ aparece,
  ```token_class``` é a classe do _token_ válido ou __ERROR__,  
 no caso de erro léxico, e
-```lexeme``` é o lexema associado ao _token_, reportado em entre 
-aspas duplas.
+```lexeme``` é o lexema disponibilizado pelo Flex na variável _yytext_,
+reportado na saída entre aspas duplas.
 
 Para o programa fonte em _main.bm_ (acima), 
-a saída gerada em _main.out_ deverá ser:
+a saída gerada em _main.out_ será:
 ```
 (2,ID,"main")
 (2,SYM,":")
@@ -84,54 +84,88 @@ a saída gerada em _main.out_ deverá ser:
 (4,SYM,":")
 (4,KEY,"integer")
 (4,SYM,";")
+(5,ID,"read")
+(5,SYM,"(")
 (5,ID,"a")
-(5,SYM,"=")
-(5,NUM,"4")
-(5,SYM,"+")
-(5,NUM,"5")
+(5,SYM,")")
 (5,SYM,";")
-(6,KEY,"print")
+(6,KEY,"if")
 (6,SYM,"(")
-(6,ID, "a")
+(6,ID,"a")
+(6,SYMC,"<=")
+(6,NUM,"0")
 (6,SYM,")")
-(6,SYM,";")
-(7,SYM,"}")
+(7,ID,"a")
+(7,SYM,"=")
+(7,NUM,"1")
+(7,SYM,";")
+(8,KEY,"print")
+(8,SYM,"(")
+(8,ID,"a")
+(8,SYM,")")
+(8,SYM,";")
+(9,SYM,"}")
 ```
 
-## Como executar (dois argumentos: entrada e saída)
+## Como executar
 
 O nome do analisador léxico (executável) deve ser _bminus_.
 O programa _bminus_ deve ler a entrada a partir de um arquivo 
-com extensão _.bm_ e escrever a saída em um arquivo com extensão _.out_.
-O nome do arquivo de saída _.out_ deve ser igual ao nome do arquivo de entrada _.bm_.
+com extensão _.bm_ e escrever a saída em outro arquivo,
+preferencialmente com extensão _.out_.
 
-```$ bminus main.bm```
+Use o script ```run.sh``` para  executar _bminus_ passando apenas
+o nome do arquivo de entrada _.bm_. A saída será gerada em 
+um arquivo com o mesmo nome e extensão  _.out_.
+
+```
+$ ./run.sh main.bm    # cria main.out
+```
+
+Para executar _bminus_ sem o script, fornecer 
+os nomes dos arquivos, de entrada e de saída, explicitamente:
+
+```
+$ ./bison main.bm a.out
+```
+
+## Como testar
+
+Use o script ```run_tests.sh```. 
+Os testes fornecidos estão na pasta ```tests/inputs```.
+Se quiser, crie outros testes nessa pasta.
+O oráculo fornecido está na pasta ```tests/oracle```.
+
+$ ./run_tests.sh  # roda os casos de testes em /tests
 
 ## Entrega
 
 A entrega do T1 deve ser feita no repositório individual 
 criado pelo GitHub Classroom. 
 O repositório tem duas pastas, ```src``` e ```tests``.
-Os arquivos na pasta _src_,  
-```bminus.l```, ```bminus.y``` e ```main.c```
-devem ser usados.
-Modificar _bminus.y_ para definir os tokens que serão usados 
-na especificação definida em  _bminus.l_.
+A pasta _tests_ contém arquivos _.bm_ com programas em B-.
 
-A pasta _tests_ contém arquivos _.bm_ com programas para teste.
-_Não_ incluir outros arquivos nesse repositório.
+Os arquivos na pasta _src_ são 
+```bminus.l```, ```bminus.y```, ```token.h```  e ```main.c```. 
+Idealmente, você só deve modificar _bminus.l_ 
+para especificar seus padrões regulares e ações para
+a análise léxica de  programas _B-_.
+_Não_ incluir outros arquivos na pasta _src_.
+
 
 A entrega deverá ser feita em duas etapas:
 
 - Entrega parcial (7 dias) 
 
-Subir uma versão incompleta do programa flex para B- 
+Para acompanhamento: Subir uma versão incompleta de bminus.bm
 com especificação de padrões e ações para 
-descartar caracteres de espacejamento e para o reconhecimento 
-de identificadores, palavras reservadas e constantes numéricas;
+desconsiderar caracteres de espacejamento e comentários,
+e para reconhecer 
+de identificadores e números.
 
 - Entrega final (15 dias) 
 
 Subir a versão completa do programa flex para B- com todos
 padrões e ações implementados. 
+
 

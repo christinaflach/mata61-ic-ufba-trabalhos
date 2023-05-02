@@ -1,7 +1,8 @@
 # Trabalhos Práticos
 
-Os trabalhos práticos serão desenvolvidos em C, com apoio das ferramentas Bison e Flex.
-A linguagem usada neste semestre é [B-Minus](./Linguagem/Manual.md) (ou B-).
+Ao longo do semestre, implementaremos um compilador para a Linguagem [B-Minus](./B-/MANUAL.md) (ou B-). 
+Os trabalhos práticos serão desenvolvidos em C, com apoio das ferramentas Bison e Flex,
+
 
 ## Análise Léxica
 
@@ -10,11 +11,14 @@ A linguagem usada neste semestre é [B-Minus](./Linguagem/Manual.md) (ou B-).
  
 ## Análise Sintática e AST
 
-
-
+TBD.
 
 ## Análise Semântica
 
-## Geração de código
+TBD.
+
+## Geração de Código
+
+TBD.
 
 
