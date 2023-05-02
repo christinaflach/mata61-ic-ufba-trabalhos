@@ -3,7 +3,7 @@
 ## Trabalho 1 (T1): Análise Léxica
 
 Nesta parte do projeto, você irá implementar um analisador léxico
-para a [linguagem B-](../B-/MANUAL.md)).
+para a [linguagem B-](../B-/MANUAL.md).
 
 O analisador léxico do trabalho T1 deve receber como entrada 
 um programa fonte em B- e retornar um sequência _tokens_, 
