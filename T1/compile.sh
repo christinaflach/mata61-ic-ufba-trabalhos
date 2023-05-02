@@ -1,18 +1,30 @@
 #!/bin/bash
 # no parameters
 # add your Flex code to scr/bminus.l
-# add the token definitions used by src/bminus.l in "src/bminus.y
-# do not change main.c
+# you don't need to modify src/bminus.y nor src/token.h
+# do NOT change src/main.c
 
+T1=$(pwd)
+
+# run inside src
 cd src
 bison -d bminus.y
+
+# rename file 
 mv bminus.tab.h token.h
+
 flex bminus.l           
+
 cc -o bminus lex.yy.c bminus.tab.c main.c
+
+# change bminus to exec and move it to T1
+chmod +x bminus 
+mv bminus "$T1"
+
+# clean
 rm lex.yy.c
-rm token.h
 rm bminus.tab.c
-chmod +x bminus
-mv bminus ..
-cd ..
+
+# back to T1
+cd "$T1"
 
