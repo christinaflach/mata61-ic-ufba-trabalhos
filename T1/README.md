@@ -3,7 +3,7 @@
 ## Trabalho 1 (T1): Análise Léxica
 
 Nesta parte do projeto, você irá implementar um analisador léxico
-para a [linguagem B-](../B-/MANUAL.md)).
+para a [linguagem B-](../B-/MANUAL.md).
 
 O analisador léxico do trabalho T1 deve receber como entrada 
 um programa fonte em B- e retornar um sequência _tokens_, 
@@ -142,7 +142,7 @@ $ ./run_tests.sh  # roda os casos de testes em /tests
 
 A entrega do T1 deve ser feita no repositório individual 
 criado pelo GitHub Classroom. 
-O repositório tem duas pastas, ```src``` e ```tests``.
+O repositório tem duas pastas, ```src``` e ```tests```.
 A pasta _tests_ contém arquivos _.bm_ com programas em B-.
 
 Os arquivos na pasta _src_ são 
