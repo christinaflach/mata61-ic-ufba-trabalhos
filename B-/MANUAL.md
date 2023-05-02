@@ -55,7 +55,7 @@ A palavra reservada ```array``` é usada na declaração de arrays, único tipoe
 #### Símbolos simples
 
 ```
-  +  -  *  /  %  !  <  >  =  ;  ,  (  )  [  ]  {  } 
+  +  -  *  /  %  !  <  >  =  : ;  ,  (  )  [  ]  {  } 
 ```
 
 #### Símbolos compostos
@@ -64,7 +64,7 @@ A palavra reservada ```array``` é usada na declaração de arrays, único tipoe
   <=  >=  ==  !=  &&  ||
 ```
 
-### 6. Constantes 
+### 6. Literais 
 
 #### Tipo ```integer```
 
@@ -159,3 +159,4 @@ e ```argv``` como em programas C.
 Adaptado do material didático cedido pelo Prof. Vinicius Petrucci e 
 do livro de D. Thain.
 
+<!-- you must copy yytext before the lexer is called again if you need to preserve the token's string representation. -->
