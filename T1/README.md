@@ -157,7 +157,7 @@ A entrega deverá ser feita em duas etapas:
 
 - Entrega parcial (7 dias) 
 
-Para acompanhamento: Subir uma versão incompleta de bminus.bm
+Para acompanhamento: Subir uma versão incompleta de bminus.l
 com especificação de padrões e ações para 
 desconsiderar caracteres de espacejamento e comentários,
 e para reconhecer 
