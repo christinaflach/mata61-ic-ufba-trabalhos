@@ -5,7 +5,9 @@ B- inclui expressões, fluxo de controle básico, funções recursivas e
 verificação de tipos. O código-objeto é compatível com C e, portanto, 
 algumas bibliotecas C padrão podem ser usadas para os tipos definidos na linguagem.
 
-Descreveremos a linguagem através de exemplos, deixando para você ler com atenção, fazer perguntas no Fórum e então extrair as especificações formais necessárias para desenvolver os trabalhos do curso.
+Descreveremos a linguagem através de exemplos, deixando para você ler com atenção, 
+fazer perguntas no Fórum e então extrair as especificações formais necessárias 
+para desenvolver os trabalhos do curso.
 
 ## Aspectos Léxicos
 
@@ -119,7 +121,31 @@ main: function integer () = {
 
 ## Aspectos Sintáticos
 
-TBD.
+Um programa B- é uma sequência de  declarações de funções ou declarações de variáveis.
+
+### Declaração de variável 
+
+- Uma declaração de variável consiste de um identificador, seguido por ':', pelo seu tipo e por ';'.
+O tipo pode ser simples (integer ou boolean) ou estruturado (array).
+- A variável de tipo simples pode ser inicializada na declaração; nesse caso, o tipo declarado 
+será seguido por '=', por um valor (do tipo integer ou boolean) e por ';'.
+- A definição do tipo estruturado "array" inicia-se pela palavra reservada ```array'', 
+seguida pelo seu tamanho (um valor do tipo integer entre colchetes) 
+e pelo tipo base de seus elementos (integer ou boolean).
+- A variável do tipo "array" pode ser inicializada na declaração; nesse caso, o tipo declarado
+será seguido por '=', por um sequência de valores (entre chaves e separados por vírgula) 
+e por ';'.
+
+#### Exemplos
+
+```
+x: boolean;
+y: integer = 123;
+z: boolean = false;
+a: array [10] integer;
+b: array [3] boolean = {true,false,false};
+```
+
 
 ## Aspectos Semânticos 
 
