@@ -87,7 +87,7 @@ Se não for detectado erro sintático, ```outputfile``` será criado porém vazi
 
 
 **Observação**:  Atenção para os nomes usados no T2.
-- O nome do arquivo Flex modificado deve ser bminus.l
+- O nome do arquivo Flex deve ser bminus.l
 - O nome do arquivo Bison deve ser bminus.y
 - O nome do arquivo que contém a função _main_ deve ser main.c.
 
@@ -125,7 +125,7 @@ main: function integer () =
 }
 ```
 
-- Saída após análise sintática do programa: um arquivo com apenas uma linha.
+- Saída após análise sintática do programa: um arquivo com apenas uma linha, contendo:
 
 ```syntax error```
 
