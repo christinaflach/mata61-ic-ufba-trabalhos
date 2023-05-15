@@ -1,5 +1,6 @@
 # Aspectos Sintáticos de B-
 
+
 ## Declarations and Statements
 
 - In B-Minor, you may declare global variables with optional constant 
@@ -29,3 +30,34 @@ and prints each out to the console, like this:
 
 Note that the element following a print statement 
 is an expression of type integer. 
+
+## Functions
+
+Functions are declared in the same way as variables, except giving a type of function followed by the return type, arguments, and code:
+
+```
+square: function integer ( x: integer ) = {
+    return xˆ2;
+}
+``` 
+
+- The return type of a function must be one of the two atomic types,
+or void to indicate no type. 
+
+- Function arguments may be of any type: integer or boolean are passed 
+by value, while array arguments are passed by reference. 
+As in C, arrays passed by reference have an indeterminate size, and so the length is typically passed
+as an extra argument (e.g. ```size``` below):
+
+```
+printarray: function void
+ ( a: array [] integer, size: integer ) = {
+    i: integer;
+    ... etc.}
+```
+
+- A complete program must have a main function that returns an integer. 
+The arguments to main may either be empty, 
+or use argc and argv in the same manner as C. 
+
+
