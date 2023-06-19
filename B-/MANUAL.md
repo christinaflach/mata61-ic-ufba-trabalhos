@@ -121,7 +121,19 @@ main: function integer () = {
 
 ## Aspectos Sintáticos
 
-Um programa B- é uma sequência de  declarações de funções ou declarações de variáveis.
+Um programa B- é uma sequência de declarações,
+sendo que cada declaração pode ser declaração de uma função ou declaração de uma variável.
+
+Em B-, podemos declarar variáveis globais com inicialização opcional,
+e funções.
+Em uma função, pode-se declarar variáveis locais, incluindo do tipo array, com inicialização opcional.
+As definições de função não podem ser aninhadas.
+No corpo de uma função, comandos básicos incluem 
+expressões aritméticas, comandos return, print, if, if-else, while, 
+ou bloco de código entre chaves '{' e '}'.
+Pode-se declarar variáveis locais a um bloco.
+O comando print não é considerado como chamada de função e recebe apenas um argumento, do tipo integer.
+
 
 ### Declaração de variável 
 
@@ -134,7 +146,7 @@ seguida pelo seu tamanho (um valor do tipo integer entre colchetes)
 e pelo tipo base de seus elementos (integer ou boolean).
 - A variável do tipo "array" pode ser inicializada na declaração; nesse caso, o tipo declarado
 será seguido por '=', por um sequência de valores (entre chaves e separados por vírgula) 
-e por ';'.
+de um tipo simples (integer ou boolean), e por ';'.
 
 #### Exemplos
 
@@ -147,11 +159,76 @@ b: array [3] boolean = {true,false,false};
 ```
 
 
+### Declaração de função
+
+- Uma declaração de função em B- começa pelo seu nome,
+seguido por ':', seguido pela palavra-chave FUNCTION, pelo tipo (atenção aqui),
+por uma lista de parâmetros entre '(' e '), o símbolo '=' e, por fim,
+a declaração de um bloco de código. 
+- A função pode ter tipo simples (integer ou boolean)
+ou "void" (ver printarray).
+- A lista de parâmetros pode ser vazia, ou contem um ou mais parâmetros separados por ','
+- Um parâmetro pode ser do tipo integer, boolean ou array.
+- A declaração de um parâmetro de tipo simples é similar a declaração de variável simples.
+- A declaração de um parâmetro do tipo array não deve indicar a dimensão do array (ver printarray).
+- Parâmetros não podem ser inicializados na declaração da função
+
+```
+square: function integer ( x: integer ) = {
+    return x*x;
+}
+
+```
+
+```
+printarray: function void
+ ( a: array [] integer, size: integer ) = {
+    i: integer = 0;
+    while (i<size) {
+        print a[i]; i = i + 1;
+    }
+} 
+
+```
+
+### Declaração de bloco
+
+Um bloco é um trecho de código entre chaves '{' e '}'.
+O trecho de código B- pode incluir declarações de variáveis locais 
+e comandos.
+
+### Comandos
+
+Comandos básicos em B- incluem
+expressões aritméticas, comandos return, print, if, if-else, while.
+Comando composto é uma lista de comandos básicos separados por ';'.
+O comando print não é considerado como chamada de função e recebe apenas um argumento, do tipo integer.
+
+### Expressões
+
+B- possui vários operadores aritméticos encontrados na linguagem C, com o mesmo significado, associatividade e nível de precedência.
+A seguir, listamos os operadores de B-, da maior para a menor precedência.
+
+
+```
+[] f()           // array, chamada de função
+- !              // negação, not
+* /              // multiplicação, divisão
++ -              // adição, subtração
+< <= > >= == !=  // comparação
+&& ||            // e lógico, ou lógico
+=                // atribuição
+
+```
+
 ## Aspectos Semânticos 
 
 TBD.
 
 <!--
+
+B-Minor is strictly typed. This means that you may only assign a value to a variable (or function parameter) if the types match exactly. You can- not perform many of the fast-and-loose conversions found in C. For ex- ample, arithmetic operators can only apply to integers. Comparisons can be performed on arguments of any type, but only if they match. Logical operations can only be performed on booleans.
+
 
 #### Tipos
 
@@ -185,4 +262,4 @@ e ```argv``` como em programas C.
 Adaptado do material didático cedido pelo Prof. Vinicius Petrucci e 
 do livro de D. Thain.
 
-<!-- you must copy yytext before the lexer is called again if you need to preserve the token's string representation. -->
+<!--you must copy yytext before the lexer is called again if you need to preserve the token's string representation. -->
