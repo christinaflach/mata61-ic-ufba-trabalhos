@@ -23,7 +23,8 @@ Outra consulta interessante é uma [especificação yacc para ANSI C](https://ww
 O Bison deverá ser utilizado para geração do analisador sintático,
 trabalhando em conjunto com o analisador léxico 
 gerado com Flex (T1).
-
+Na pasta ```src''' colocamos o arquivo ```lex.yy.c''' (não apagar ou modificar),
+que deve ser compilado com os demais arquivos para gerar o executável ```bminus'''.
 
 ### bminus.y
 
@@ -32,62 +33,49 @@ gerado com Flex (T1).
 A opção -d faz com que o Bison gere o arquivo _bminus.tab.h_, 
 que faz a interface com o analisador léxico gerado pelo Flex.
 
-- A definição dos tokens com a diretiva ```%token``` deve ser modificada para usar códigos mais específicos, por exemplo:
+- A definição dos tokens com a diretiva ```%token``` foi modificada para usar códigos mais específicos, por exemplo:
    - IF, WHILE, etc., para palavras reservadas, ao invés da categoria geral "KEY" usada em T1;
-   - ADD, SUB, etc., para símbolos, ao invés da da categoria geral "SYM" usada em T1;
+   - PLUS, MINUS, etc., para símbolos, ao invés da da categoria geral "SYM" usada em T1;
    - EQ, NEQ, AND, etc., para símbolos compostos, ao invés da da categoria geral "SYMC" usada em T1;
 
 ```
 %token IF 
 ...
-%token ADD
+%token PLUS
+
+%token EQ
+
+%token COMMA
 ...
 ``` 
 
 - As regras de produção da gramática para B- devem ser especificadas no programa bminus.y.
 
-__Atenção: Colocar os nomes dos membros da equipe como comentário no arquivo bminus.l.__
-
-### bminus.l
-
-O arquivo _bminus.l, criado no T1, deverá ser copiado e modificado.
-
-- Incluir o arquivo "bminus.tab.h"  gerado pelo Bison (não usar "token.h").
-
-- Retornar novos códigos de token nas ações associadas às expressões regulares, por exemplo:
-
-```
-if      { return IF; }
-"+"     { return ADD; }
-```
-
-__Atenção: Colocar os nomes dos membros da equipe como comentário no arquivo bminus.l.__
+__Atenção: Colocar os nomes dos membros da equipe como comentário no arquivo bminus.y.__
 
 ### main.c
 
-A função _main()_ no arquivo main.c deverá ser modificada para fazer uma chamada a yyparse().
+A função _main()_ no arquivo main.c foi  modificada para fazer uma chamada a yyparse().
 
 __Atenção: Colocar os nomes dos membros da equipe como comentário na primeira linha de main.c.__
 
 ## Compilação de ```bminus```
 
 ```$ bison -d bminus.y```
-```$ flex bminus.l```
 ```$ cc -o bminus bminus.tab.c lex.yy.c main.c```
 
 ## Execução do analisador sintático ```bminus```
 
-```$./bminus inputfile outputfile``` 
+```$./bminus exemplo_0.bm exemplo_0.out``` 
 
 
-O arquivo ```inputfile``` contém um programa-fonte em B-.
-Em caso de erro sintático, o arquivo ```outputfile``` gerado conterá apenas a mensagem "syntax error".
-Se não for detectado erro sintático, ```outputfile``` será criado porém vazio (0KB).
-- Obs.: Em T2, o arquivo ```outputfile``` é criado apenas para uso na correção automática de T2.
+O arquivo ```exemplo_0.bm``` contém um programa-fonte em B-.
+Para T2, ```exemplo_0.out``` será criado porém vazio (0KB).
+As mensagens de saída do analisador sintático são enviadas para ```stderr'''.
+- Obs.: Em T2, o arquivo de saída é criado apenas para uso na correção automática de T2.
 
 
 **Observação**:  Atenção para os nomes usados no T2.
-- O nome do arquivo Flex deve ser bminus.l
 - O nome do arquivo Bison deve ser bminus.y
 - O nome do arquivo que contém a função _main_ deve ser main.c.
 
@@ -110,7 +98,7 @@ main: function integer () =
 
 - Saída após análise sintática do programa: um arquivo vazio (0KB)
 
-### Exemplo 2 (com erro sintático)
+### Exemplo 2 (*com* erro sintático)
 
 ```
 // exemplo com erro sintatico
@@ -127,7 +115,7 @@ main: function integer () =
 
 - Saída após análise sintática do programa: um arquivo com apenas uma linha, contendo:
 
-```syntax error```
+```erro sintático.```
 
 
 ## Correção Automática
@@ -137,7 +125,3 @@ Desse modo, a correção irá considerar apenas os arquivos colocados
 no repositório GitHub da equipe,
 com os nomes de arquivos indicados na especificação do trabalho.
 
---------
-Parte deste material foi cedido pelo Prof. Vinicius Petrucci, 
-e traduzido e adaptado pela Profa. Christina von Flach.
-<!-- https://ruslanspivak.com/lsbasi-part1/ -->
